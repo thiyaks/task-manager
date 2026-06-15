@@ -21,8 +21,6 @@ if (!fs.existsSync(FILE)) {
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
-
-const path = require("path");
 const FILE = path.join(__dirname, "tasks.json");
 
 if (!fs.existsSync(FILE)) {
