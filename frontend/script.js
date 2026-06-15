@@ -9,7 +9,7 @@ let tasks = [];
 ========================= */
 
 function loadTasks() {
-    fetch("http://localhost:5000/tasks")
+    fetch("/tasks")
     .then(res => res.json())
     .then(data => {
         tasks = data;
@@ -34,7 +34,7 @@ function addTask() {
         return;
     }
 
-    fetch("http://localhost:5000/tasks", {
+    fetch("/tasks", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -139,7 +139,7 @@ if (progress === 100 && tasks.length > 0) {
 
 function completeTask(id) {
 
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`/tasks/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -159,7 +159,7 @@ function deleteTask(id) {
 
     if (confirm("Delete this task?")) {
 
-        fetch(`http://localhost:5000/tasks/${id}`, {
+        fetch(`/tasks/${id}`, {
             method: "DELETE"
         })
         .then(() => loadTasks());
@@ -180,7 +180,7 @@ function editTask(id) {
 
     if (!newTitle) return;
 
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`/tasks/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
