@@ -1,13 +1,25 @@
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
+const path = require("path");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+// Serve frontend files
+app.use(express.static(path.join(__dirname, "../frontend")));
+
+const FILE = path.join(__dirname, "tasks.json");
+
+if (!fs.existsSync(FILE)) {
+    fs.writeFileSync(FILE, "[]");
+}
+
+// Open index.html when visiting /
 app.get("/", (req, res) => {
-    res.send("🚀 Task Manager API is running");
+    res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 
 const path = require("path");
@@ -17,22 +29,14 @@ if (!fs.existsSync(FILE)) {
     fs.writeFileSync(FILE, "[]");
 }
 
-/* GET TASKS */
-app.get("/", (req, res) => {
-    res.status(200).json({
-        project: "Task Manager API",
-        status: "running",
-        version: "1.0.0",
-        endpoints: {
-            getTasks: "/tasks (GET)",
-            addTask: "/tasks (POST)",
-            updateTask: "/tasks/:id (PUT)",
-            deleteTask: "/tasks/:id (DELETE)"
-        }
-    });
-});
 app.get("/health", (req, res) => {
     res.json({ status: "OK", uptime: process.uptime() });
+});
+app.get("/tasks", (req, res) => {
+    const tasks = JSON.parse(
+        fs.readFileSync(FILE, "utf8")
+    );
+    res.json(tasks);
 });
 /* ADD TASK */
 app.post("/tasks", (req, res) => {
