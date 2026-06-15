@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login - Task Manager</title>
+<link rel="stylesheet" href="style.css">
+<button onclick="login()" id="loginBtn">
+    <span id="btnText">Login</span>
+    <span id="spinner" class="spinner"></span>
+</button>
+</head>
+
+<body class="login-body">
+
+<div class="login-box">
+    <h2>TaskPro Login</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p id="error"></p>
+</div>
+<p style="font-size:12px;color:gray;">
+Demo login: admin / 1234
+</p>
+<script src="login.js"></script>
+
+</body>
+</html>

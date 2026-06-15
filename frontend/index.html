@@ -1,0 +1,182 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>TaskPro</h2>
+        <div id="dashboardSection" class="section">
+    <!-- stats + progress -->
+</div>
+
+<div id="tasksSection" class="section" style="display:none;">
+    <!-- task form + list -->
+</div>
+
+<div id="scheduleSection" class="section" style="display:none;">
+    <h2>📅 Schedule Coming Soon</h2>
+</div>
+
+<div id="settingsSection" class="section" style="display:none;">
+    <h2>⚙ Settings</h2>
+    <p>Dark mode, preferences, etc.</p>
+</div>
+
+        <ul>
+    <li onclick="showSection('dashboard')">📊 Dashboard</li>
+    <li onclick="showSection('tasks')">📝 Tasks</li>
+    <li onclick="showSection('schedule')">📅 Schedule</li>
+    <li onclick="showSection('settings')">⚙ Settings</li>
+</ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Header -->
+        <header>
+            <h1>Task Management System</h1>
+
+            <button onclick="toggleTheme()" id="themeBtn">
+                🌙 Dark Mode
+            </button>
+        </header>
+
+        <!-- Welcome Section -->
+        <div class="welcome">
+            <h2>Welcome Back, Sathiya Sri 👋</h2>
+            <p>Manage your daily tasks efficiently.</p>
+
+            <p id="currentTime"></p>
+        </div>
+        <div class="project-info">
+    <h2>TaskPro Management System</h2>
+    <p>
+        A modern task management application developed using
+        HTML, CSS, JavaScript, Node.js and Express.js.
+    </p>
+</div>
+
+        <!-- Progress Section -->
+        <div class="progress-container">
+    <h3>Project Progress</h3>
+
+    <div class="progress-bar">
+        <div id="progressFill"></div>
+    </div>
+
+    <p id="progressText">0% Completed</p>
+</div>
+
+<!-- Technology Stack -->
+<div class="tech-stack">
+    <h2>Technology Stack</h2>
+
+    <div class="stats">
+        <div class="card">HTML5</div>
+        <div class="card">CSS3</div>
+        <div class="card">JavaScript</div>
+        <div class="card">Node.js</div>
+        <div class="card">Express.js</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Stats -->
+    <div class="stats">
+                <div class="card">
+                    <h3>Progress</h3>
+                    <p id="progressPercent">0%</p>
+                </div>
+
+                <div class="card">
+                    <h3>Total Tasks</h3>
+                    <p id="totalTasks">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Completed</h3>
+                    <p id="completedTasks">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Pending</h3>
+                    <p id="pendingTasks">0</p>
+                </div>
+
+            </div>
+
+            <!-- Task Form -->
+            <div class="task-form">
+
+                <h2>Add New Task</h2>
+
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Task Title"
+                >
+
+                <input
+                    type="date"
+                    id="dueDate"
+                >
+
+                <select id="priority">
+                    <option value="Low">🟢 Low Priority</option>
+                    <option value="Medium">🟡 Medium Priority</option>
+                    <option value="High">🔴 High Priority</option>
+                </select>
+
+                <textarea
+                    id="description"
+                    placeholder="Task Description"
+                ></textarea>
+
+                <button onclick="addTask()">
+                    Add Task
+                </button>
+
+            </div>
+
+            <!-- Report Button -->
+            <button onclick="window.print()">
+                Download Report
+            </button>
+
+            <br><br>
+
+            <!-- Search -->
+            <input
+                type="text"
+                id="search"
+                placeholder="🔍 Search Tasks..."
+                onkeyup="searchTasks()"
+            >
+
+            <!-- Task List -->
+            <div id="taskList"></div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            Developed By Sathiya Sri © 2026
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
