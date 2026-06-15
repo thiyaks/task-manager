@@ -21,15 +21,6 @@ if (!fs.existsSync(FILE)) {
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
-const FILE = path.join(__dirname, "tasks.json");
-
-if (!fs.existsSync(FILE)) {
-    fs.writeFileSync(FILE, "[]");
-}
-
-app.get("/health", (req, res) => {
-    res.json({ status: "OK", uptime: process.uptime() });
-});
 app.get("/tasks", (req, res) => {
     const tasks = JSON.parse(
         fs.readFileSync(FILE, "utf8")
